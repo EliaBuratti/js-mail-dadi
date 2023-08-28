@@ -18,9 +18,9 @@ proviamo ad immaginare le operazioni che vogliamo far svolgere al nostro program
 
 // genero numeri casuali
 
-randomNuber();
+randomNumber();
 
-function randomNuber () {
+function randomNumber () {
 
 const userNumber = Math.floor(Math.random() * 6) + 1;
 console.log(userNumber);
@@ -38,9 +38,6 @@ const dicePc = document.querySelector('.pc').innerHTML = pcNumber;
 
 const resultEl = document.querySelector('.result');
 
-
-
-
 if (userNumber > pcNumber) {
     console.log('user win');
 
@@ -57,15 +54,19 @@ if (userNumber > pcNumber) {
     resultEl.insertAdjacentHTML('beforebegin', `<h2 class="winner">Draw.</h2>`);
 }};
 
-//rilancio i dadi
+//rilancio i dadi e rimuovo il testo del vincitore
 const retry = document.querySelector('.dice_game');
 
 retry.addEventListener('click', function(){
 
+    //rimuovo l'elemento
     document.querySelector('.winner').remove();
-    randomNuber();
+
+    // rieseguo la funzione del lancio dei dadi
+    randomNumber();
 });
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // verifica della mail 
 
@@ -79,19 +80,30 @@ mailForm.addEventListener('submit', function(e) {
     //impedisco il refresh della pagina dopo aver cliccato su 'verifica'
     e.preventDefault();
 
+
+    //controllo se presente già un testo del check della mail e nel caso ci fosse rimuovo l'elemento.
+    const textMessage = document.querySelector('.check_mail > h2');
+
+    if (textMessage != null) {
+        textMessage.remove();
+    };
+
+    //verifico la mail se è nella whitelist e poi restituisco una risposta
     const userCheck = document.querySelector('input').value;
     console.log('la tua e-mail è', userCheck);
 
     if (whiteList.includes(userCheck)) {
         console.log('Benvenuto');
 
-        mailForm.insertAdjacentHTML('beforeend', `<h2>Benvenuto <br>${userCheck}</h2>`)
+
+        mailForm.insertAdjacentHTML('beforeend', `<h2>Benvenuto <br>${userCheck}</h2>`);
 
     } else {
         console.log('Non sei presente nella lista');
 
-        mailForm.insertAdjacentHTML('beforeend', '<h2>Non sei presente nella lista</h2>')
-    }
+
+        mailForm.insertAdjacentHTML('beforeend', '<h2>Non sei presente nella lista</h2>');
+    };
 
 
 });
