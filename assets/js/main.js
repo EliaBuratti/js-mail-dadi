@@ -17,29 +17,61 @@ proviamo ad immaginare le operazioni che vogliamo far svolgere al nostro program
 
 
 // genero numeri casuali
+
+randomNuber();
+
+function randomNuber () {
+
 const userNumber = Math.floor(Math.random() * 6) + 1;
 console.log(userNumber);
 
 const pcNumber = Math.floor(Math.random() * 6) + 1;
 console.log(pcNumber);
 
-//confronto i risultati e stabilisco il vincitore
+//stampo in pagina i numeri
+
+const diceUser = document.querySelector('.user').innerHTML = userNumber;
+
+const dicePc = document.querySelector('.pc').innerHTML = pcNumber;
+
+//confronto i risultati e stabilisco il vincitore + creo un elemento in pagina che comunica chi ha vinto
+
+const resultEl = document.querySelector('.result');
+
+
+
+
 if (userNumber > pcNumber) {
     console.log('user win');
+
+    resultEl.insertAdjacentHTML('beforebegin', `<h2 class="winner">👈 User win.</h2>`);
     
 } else if ( userNumber < pcNumber) {
     console.log('pc win');
 
+    resultEl.insertAdjacentHTML('beforebegin', `<h2 class="winner">👉 Pc win.</h2>`);
+
 } else {
     console.log('Draw');
-};
+
+    resultEl.insertAdjacentHTML('beforebegin', `<h2 class="winner">Draw.</h2>`);
+}};
+
+//rilancio i dadi
+const retry = document.querySelector('.dice_game');
+
+retry.addEventListener('click', function(){
+
+    document.querySelector('.winner').remove();
+    randomNuber();
+});
 
 
 // verifica della mail 
 
 const whiteList = ['mariorossi@gmail.com', 'luigiesposito@gmail.com', 'andreamarconi@gmail.com'];
 
-const mailForm = document.querySelector('form');
+const mailForm = document.querySelector('.check_mail');
 
 
 mailForm.addEventListener('submit', function(e) {
@@ -53,8 +85,12 @@ mailForm.addEventListener('submit', function(e) {
     if (whiteList.includes(userCheck)) {
         console.log('Benvenuto');
 
+        mailForm.insertAdjacentHTML('beforeend', `<h2>Benvenuto <br>${userCheck}</h2>`)
+
     } else {
         console.log('Non sei presente nella lista');
+
+        mailForm.insertAdjacentHTML('beforeend', '<h2>Non sei presente nella lista</h2>')
     }
 
 
