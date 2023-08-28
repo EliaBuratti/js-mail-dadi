@@ -5,3 +5,40 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 2rem;
+    background-color: lightgray;
+}
+
+h1 {
+    margin: 2rem 0;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.dice {
+    background-color: coral;
+    width: calc(100% / 2);
+    aspect-ratio: 1 /1;
+    border: 1px solid;
+    border-radius: 1rem;
+    margin: 3rem 0;
+}
+
+.input_mail input, .input_mail button {
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem;
+    margin: 2rem 0.75rem;
+}
