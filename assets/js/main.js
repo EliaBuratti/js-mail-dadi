@@ -55,7 +55,7 @@ if (userNumber > pcNumber) {
 }};
 
 //rilancio i dadi e rimuovo il testo del vincitore
-const retry = document.querySelector('.dice_game');
+const retry = document.querySelector('.dice_game>.eb_btn');
 
 retry.addEventListener('click', function(){
 
